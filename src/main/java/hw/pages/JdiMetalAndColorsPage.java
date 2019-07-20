@@ -1,12 +1,12 @@
-package hw7.pages;
+package hw.pages;
 
 import com.epam.jdi.light.elements.base.UIElement;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.simple.UI;
 import com.epam.jdi.light.ui.html.common.Button;
-import hw7.entities.Data;
-import hw7.enums.MetalAndColorsElements;
-import hw7.forms.JdiMetalAndColorsForm;
+import hw.entities.Data;
+import hw.enums.MetalAndColorsElements;
+import hw.forms.JdiMetalAndColorsForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
@@ -28,7 +28,7 @@ public class JdiMetalAndColorsPage extends WebPage {
     }
 
     public void selectValues(Data data) {
-        metalAndColorsForm.selectColors(data.getColors());
+        metalAndColorsForm.selectColors(data.getColor());
         metalAndColorsForm.selectElements(data.getElements());
         metalAndColorsForm.selectMetals(data.getMetals());
         metalAndColorsForm.selectSummary(data.getSummary());
@@ -53,18 +53,14 @@ public class JdiMetalAndColorsPage extends WebPage {
             }
         }
 
-        if (data1.getColors() != null) {
-            for (String color : data1.getColors()) {
-                resultPanel.find(By.xpath(".//li[contains(string(),'" + MetalAndColorsElements.COLOR.getName() + "')]"))
-                        .assertThat().text(containsString(color));
-            }
+        if (data1.getColor() != null) {
+            resultPanel.find(By.xpath(".//li[contains(string(),'" + MetalAndColorsElements.COLOR.getName() + "')]"))
+                    .assertThat().text(containsString(data1.getColor()));
         }
 
         if (data1.getMetals() != null) {
-            for (String metal : data1.getMetals()) {
-                resultPanel.find(By.xpath(".//li[contains(string(),'" + MetalAndColorsElements.METAL.getName() + "')]"))
-                        .assertThat().text(containsString(metal));
-            }
+            resultPanel.find(By.xpath(".//li[contains(string(),'" + MetalAndColorsElements.METAL.getName() + "')]"))
+                    .assertThat().text(containsString(data1.getMetals()));
         }
 
         if (data1.getVegetables() != null) {

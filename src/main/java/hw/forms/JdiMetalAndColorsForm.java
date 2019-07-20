@@ -1,4 +1,4 @@
-package hw7.forms;
+package hw.forms;
 
 import com.epam.jdi.light.elements.base.UIElement;
 import com.epam.jdi.light.elements.complex.Droplist;
@@ -6,8 +6,8 @@ import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.objects.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.simple.XPath;
 import com.epam.jdi.light.ui.html.complex.RadioButtons;
-import hw7.entities.Data;
-import hw7.enums.Vegetables;
+import hw.entities.Data;
+import hw.enums.Vegetables;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -38,10 +38,8 @@ public class JdiMetalAndColorsForm extends Form<Data> {
     @FindBy(css = "#even-selector > p")
     protected RadioButtons summaryEven;
 
-    public void selectColors(List<String> colors) {
-        for (String color : colors) {
-            colorsDropdown.select(color);
-        }
+    public void selectColors(String color) {
+        colorsDropdown.select(color);
     }
 
     public void selectElements(List<String> elements) {
@@ -50,11 +48,9 @@ public class JdiMetalAndColorsForm extends Form<Data> {
         }
     }
 
-    public void selectMetals(List<String> metals) {
+    public void selectMetals(String metal) {
         metalsDropdown.click();
-        for (String metal : metals) {
-            metalsDropdown.select(metal);
-        }
+        metalsDropdown.select(metal);
     }
 
     public void selectSummary(List<String> summary) {
