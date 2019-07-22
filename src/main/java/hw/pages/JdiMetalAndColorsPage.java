@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 
 import static org.hamcrest.core.StringContains.containsString;
 
+// TODO This is completely prohibited to use raw Selenium calls in PO methods.
 public class JdiMetalAndColorsPage extends WebPage {
 
     private JdiMetalAndColorsForm metalAndColorsForm;
@@ -36,6 +37,11 @@ public class JdiMetalAndColorsPage extends WebPage {
     }
 
 
+    // TODO The certain sequence of log's rows doesn't matter in this case.
+    // It will be easier to compare just two List<strings>
+    // First list you can generate from MetalsAndColors instance
+    // Second list can be generated from Log ui-element
+    // TODO Pay attention on argument name.
     public void checkValues(Data data1) {
         if (data1.getSummary() != null) {
             int sum = 0;
