@@ -3,7 +3,7 @@ package hw;
 import com.epam.jdi.light.driver.get.DriverData;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import hw.entities.Data;
+import hw.entities.MetalAndColorsFormFieldsValuesData;
 import hw.entities.Users;
 import hw.enums.Menu;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -23,7 +23,7 @@ public class JdiTest {
     @DataProvider(name = "fromJson")
     public Object[] getData() throws FileNotFoundException {
         BufferedReader root = new BufferedReader(new FileReader(DATA_PROVIDER_JSON_PATH));
-        Map<String, Data> dataSets = new Gson().fromJson(root, new TypeToken<Map<String, Data>>() {
+        Map<String, MetalAndColorsFormFieldsValuesData> dataSets = new Gson().fromJson(root, new TypeToken<Map<String, MetalAndColorsFormFieldsValuesData>>() {
         }.getType());
         return dataSets.values().toArray();
     }
@@ -46,14 +46,14 @@ public class JdiTest {
         JdiSite.homePage.checkLoggedin(Users.PETER);
         JdiSite.homePage.clickHeaderButton(Menu.METALS_AND_COLORS);
         JdiSite.metalAndColorsPage.isOpened();
-        JdiSite.metalAndColorsPage.selectValues(Data.DATA1);
+        JdiSite.metalAndColorsPage.selectValues(MetalAndColorsFormFieldsValuesData.HW1);
         JdiSite.metalAndColorsPage.submitForm();
-        JdiSite.metalAndColorsPage.checkValues(Data.DATA1);
+        JdiSite.metalAndColorsPage.checkValues(MetalAndColorsFormFieldsValuesData.HW1);
     }
 
 
     @Test(dataProvider = "fromJson")
-    public void metalAndColorsPageTestHomework2(Data data) {
+    public void metalAndColorsPageTestHomework2(MetalAndColorsFormFieldsValuesData data) {
         JdiSite.open();
         JdiSite.homePage.login(Users.PETER);
         JdiSite.homePage.checkLoggedin(Users.PETER);

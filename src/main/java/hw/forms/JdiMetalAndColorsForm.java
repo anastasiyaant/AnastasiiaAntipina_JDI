@@ -6,13 +6,13 @@ import com.epam.jdi.light.elements.composite.Form;
 import com.epam.jdi.light.elements.pageobjects.annotations.objects.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.simple.XPath;
 import com.epam.jdi.light.ui.html.complex.RadioButtons;
-import hw.entities.Data;
+import hw.entities.MetalAndColorsFormFieldsValuesData;
 import hw.enums.Vegetables;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class JdiMetalAndColorsForm extends Form<Data> {
+public class JdiMetalAndColorsForm extends Form<MetalAndColorsFormFieldsValuesData>{
     @JDropdown(root = "div[ui=dropdown]",
             value = ".filter-option",
             list = "li",
